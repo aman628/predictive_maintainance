@@ -2,22 +2,20 @@ import logging
 
 import dash
 from dash.dependencies import Input, Output, State
+# import dash_core_components as dcc
+from dash import dcc
+# import dash_html_components as html
+from dash import html
+# import dash_daq as daq
 
-import dash_core_components as dcc
-import dash_html_components as html
-import dash_daq as daq
-
-import dash_table
-
+# import dash_table
+from dash import dash_table
+from dash import dash_table
 import numpy as np
-
 import plotly.express as px
 import plotly.graph_objs as go
-
 import shap
-
 import vaex
-
 from src import load_data_sources, sensor_data
 
 # #################################
@@ -25,6 +23,12 @@ from src import load_data_sources, sensor_data
 # #################################
 
 import dash_daq as daq
+
+import tensorflow as tf
+tf.keras.backend.set_learning_phase(True)
+
+from flask import Flask, render_template, request, jsonify
+app = Flask(__name__)
 
 
 logging.basicConfig(level=logging.INFO,
@@ -472,4 +476,5 @@ def update_explain_sensor_figure(shap_values, sensor, scaled, engine_number):
 # #################################
 
 if __name__ == '__main__':
-    app.run_server(debug=True, host="0.0.0.0", port="8060")
+    app.run()
+    # app.run_server(debug=True, host="0.0.0.0", port="8060")
